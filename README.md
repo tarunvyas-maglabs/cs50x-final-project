@@ -1,4 +1,65 @@
-# Immerse
-#### Video Demo:  <URL [HERE](https://youtu.be/QfCiaEBWTGw)> 
-#### Description: Immerse is a library of various mediums of books. Much like IMDb it allows users to access a huge library of books (using Google Books API) and provided the user is logged in they can then rate the books. Once they have rated books of their choice they can see a list of their favourite books (ordered by rating) and their ratings for the books are also uploaded onto our ranked list by all users.
-#### Files: The project consists of apology.html as an homage to CS50, an index.html which is the homepage, a leaderboard.html which shows the ranked list by all users, login.html and register.html for login and registration respectively, mylist.html which is the users personal list of favourite books, search.html that allows users to search for books and sign.html which like layout.html is used for consistency in design where sign.html is used for login and registration and layout.html for the rest. I created a style.css for any additional styling I decided to do. Majority of the styling was done using Bootstrap. I also created a project.js file which consists of all the code that was used in order to create and use the rating for books. I wanted to note that for the sake of keeping the database as small as possible books are only added once it has been rated by a user. The project.db consists of a users table to store information about the user, an authors table, a books table which includes book details and contains the average rating for a book which is done by total_ratings / ratings_count, and a rating table that saves user ratings.
+# Immerse — Book Discovery & Rating Web App
+
+Immerse is a Flask-based web application that allows users to search for books using the **Google Books API** and rate them on a 5-star scale. Logged-in users can maintain a personal list of rated books and view a global leaderboard ranking books by aggregated ratings across all users.
+
+<img width="2560" height="1319" alt="Screenshot 2026-02-10 at 10 32 26 AM" src="https://github.com/user-attachments/assets/37914086-cbde-485f-af7b-34c5aa61a520" />
+
+When a user visits the site, they can browse articles, search for books, view recommendations, and (if signed in) access their personal list.
+
+<img width="2560" height="1318" alt="Screenshot 2026-02-10 at 10 34 37 AM" src="https://github.com/user-attachments/assets/ef339395-d4d6-4051-ba23-af0c8fccab42" />
+
+The user can search for a book which calls the Google Books API and returns a list of books that match the contents entered by the user. If the user is signed in they can rate the books.
+
+<img width="2559" height="1314" alt="Screenshot 2026-02-10 at 10 32 17 AM" src="https://github.com/user-attachments/assets/ff791ac0-6ee9-4ac8-ba8f-cd6db3dbbad7" />
+
+When a user rates a book it will be added to their list of books ordered by highest rated to lowest rated.
+
+<img width="2560" height="1351" alt="Screenshot 2026-02-10 at 10 27 58 AM" src="https://github.com/user-attachments/assets/2eccb3dd-7e0f-4f3d-b466-ca8326e3e410" />
+
+The Recommended tab displays the highest-rated books across all users.
+
+---
+
+## Features
+- User authentication (register/login/logout)
+- Book search via Google Books API
+- Book rating system (1–5 stars)
+- Personal rated list (“My List”), ordered by rating
+- Global leaderboard aggregating ratings across all users
+
+---
+
+## Tech Stack
+- **Backend:** Python, Flask  
+- **Frontend:** HTML, CSS, Bootstrap  
+- **Database:** SQLite  
+- **API:** Google Books API  
+
+---
+
+## Project Structure
+Key templates include:
+- `index.html` — homepage  
+- `search.html` — book search interface  
+- `leaderboard.html` — global ranked list  
+- `mylist.html` — user-specific rated list  
+- `login.html`, `register.html` — authentication  
+- `layout.html`, `sign.html` — shared layout templates  
+- `project.js` — rating logic and front-end behavior  
+- `style.css` — additional styling  
+
+---
+
+## Database Design
+The SQLite database contains:
+- `users` — user account information  
+- `books` — stored book details and aggregated rating values  
+- `ratings` — individual user ratings per book  
+- `authors` — author information  
+
+Books are stored in the database only after being rated by at least one user.
+
+---
+
+## Notes
+This project was developed as the final project for **Harvard CS50x**.
