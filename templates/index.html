@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block header %}
+<div id="carouselExampleAutoplaying" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 100%;">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="carousel-overlay"></div>
+            <img src="static/assets/classics.webp" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="...">
+            <div class="carousel-text">
+                <h1>The "Classics"</h1>
+                <h3>Books that revolutionised thought.</h3>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% endblock %}
+
+{% block main %}
+    <div class="card-group">
+        <div class="card">
+            <img src="/static/assets/books.jpg" class="card-img-top" alt="books and yellow background">
+            <div class="card-body">
+                <h5 class="card-title">Best Books 2024</h5>
+                <p class="card-text">The best books to read this year!</p>
+            </div>
+            </div>
+            <div class="card">
+            <img src="/static/assets/books2.webp" class="card-img-top" alt="books and yellow/orange background">
+            <div class="card-body">
+                <h5 class="card-title">Fantasy Books</h5>
+                <p class="card-text">It's time to escape reality!</p>
+            </div>
+            </div>
+            <div class="card">
+            <img src="/static/assets/akira.webp" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Akira</h5>
+                <p class="card-text">Your favourite rapper's favourite manga</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

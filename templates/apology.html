@@ -1,0 +1,10 @@
+{% extends "sign.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+<!-- CS50 inspired --> 
+    <img alt="{{ error_code }}" class="border img-fluid" src="https://api.memegen.link/images/custom/{{ error_code | urlencode }}/{{ message | urlencode }}.jpg?background=https://i.imgur.com/CsCgN7Ll.png&width=400" title="{{ error_code }}">
+{% endblock %}

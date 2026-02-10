@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+
+{% block main %}
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% elif books and books|length > 0 %}
+        <div class="table-responsive">
+            <table class="table align-middle">
+                {% for book in books %}
+                    <tbody>
+                        <tr>
+                            <td> </td>
+                        {% if book.thumbnail %}
+                            <td><img src="{{ book.thumbnail }}" alt="Book cover of {{ book.title }}"></td>
+                        {% else %}
+                            <td>No Cover</td>
+                        {% endif %}
+                            <td class="book-title">{{ book.title }}</td>
+                            <td class="book-author"><strong>Author(s):</strong> {{ book.authors }}</td>
+                            {% if session['user_id'] %}
+                            <td>
+                                <div class="rating-stars" 
+                                     data-book-id="{{ book.id }}" 
+                                     data-book-title="{{ book.title }}" 
+                                     data-author-name="{{ book.authors|join(', ') }}" 
+                                     data-publication-year="{{ book.publication_year if book.publication_year else 'Unknown' }}" 
+                                     data-image-url="{{ book.thumbnail if book.thumbnail else '' }}">
+                                    <span>Rate:</span>
+                                    <div class="stars">
+                                        {% for i in range(1, 6) %}
+                                            <label>
+                                                <input type="radio" name="rating-{{ book.id }}" value="{{ i }}" required hidden>
+                                                <span class="star" data-rating="{{ i }}">&#9733;</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </td>
+                            
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <!-- Previous Button Disabled Logic -->
+                <li {% if page == 0 %} class="page-item disabled" aria-disabled="true" {% else %} class="page-item" {% endif %}>
+                    <a class="page-link" href="/search?search={{ query }}&search_type=intitle&page={{ page - 1 }}">Previous</a>
+                </li>
+
+                <!-- Dynamic Page Number Links -->
+                {% for i in range(1, 4) %}
+                    <li class="page-item {% if page + 1 == i %}active{% endif %}">
+                        <a class="page-link" href="/search?search={{ query }}&search_type=intitle&page={{ i - 1 }}">{{ i }}</a>
+                    </li>
+                {% endfor %}
+
+                <!-- Next Button Disabled Logic -->
+                <li {% if page == total_pages %} class="page-item disabled" aria-disabled="true" {% else %} class="page-item" {% endif %}>
+                    <a class="page-link" href="/search?search={{ query }}&search_type=intitle&page={{ page + 1 }}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    {% else %}
+        <p>No results found for "{{ query }}".</p>
+    {% endif %}
+{% endblock %}

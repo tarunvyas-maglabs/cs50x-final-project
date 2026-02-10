@@ -1,0 +1,77 @@
+.heading {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1rem 1rem;
+    border: 1px solid transparent;
+}
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Black with 50% opacity */
+    z-index: 1; /* Ensure overlay is above the image */
+}
+.carousel-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Place text above the overlay */
+    text-align: center;
+    color: white;
+}
+.book-card {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+.book-thumbnail {
+    width: 80px;
+    height: 120px;
+    margin-right: 20px;
+}
+.book-thumbnail-placeholder {
+    width: 80px;
+    height: 120px;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    margin-right: 20px;
+}
+.book-details {
+    flex-grow: 1;
+}
+.book-title {
+    max-width: 300px; 
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.4;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    white-space: normal; 
+    margin-bottom: 5px;
+}
+.book-author, .book-description {
+    margin: 5px 0;
+    color: #666;
+}
+.star {
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+    margin: 0 2px;
+}
+.star.selected,
+.star:hover {
+    color: gold;
+}
+
+.card-img-top
+{
+    height: 300px; 
+}

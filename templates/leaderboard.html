@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My List
+{% endblock %}
+
+{% block header %}
+    <div style="padding: 20px"></div>
+    <h1 style="padding:10px; text-align: center;">Top Rated Books</h1>
+{% endblock %}
+
+{% block main %}
+
+    {% if not books %}
+        <p>You haven't rated any books yet! <a href="/search">Find books to rate</a>.</p>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Average Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <td>
+                                {% if book.image_url %}
+                                    <img src="{{ book.image_url }}" alt="Cover of {{ book.title }}" style="max-width: 100px; max-height: 150px;">
+                                {% else %}
+                                    <img src="/static/images/default-cover.jpg" alt="No cover available" style="max-width: 100px; max-height: 150px;">
+                                {% endif %}
+                            </td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author_name }}</td>
+                            <td>
+                                {% if book.ratings_count > 0 %}
+                                    {{ "%.1f"|format(book.total_ratings / book.ratings_count) }}
+                                {% else %}
+                                    N/A
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}
